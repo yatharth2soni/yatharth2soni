@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="850" height="40" viewBox="0 0 850 40" fill="none">
-  <rect width="850" height="40" rx="6" fill="#000000" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
-  <text x="425" y="24" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" fill="rgba(255,255,255,0.5)">
-    [EOF] ─── guest@yatharth2soni:~$ logout ─── Connection to terminal closed.
-  </text>
-</svg>

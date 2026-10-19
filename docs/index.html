@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yatharth Soni</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+@property --a{syntax:"<angle>";initial-value:0deg;inherits:false}
+:root{--bg:#000;--fg:#fff;--dim:#b8b8b8;--line:#fff;--font:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000;--fg:#fff}}
+*{box-sizing:border-box}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:#000;color:var(--fg);font:14px/1.8 var(--font);padding:14px}
+#bar{position:fixed;top:0;left:0;height:2px;width:0;background:#fff;box-shadow:0 0 12px 2px #fff;z-index:20}
+.frame{position:relative;max-width:960px;margin:0 auto;border-radius:18px;padding:2px;
+background:conic-gradient(from var(--a),rgba(255,255,255,.35) 0,#fff 8%,rgba(255,255,255,.35) 18%,rgba(255,255,255,.35) 50%,#fff 58%,rgba(255,255,255,.35) 68%);
+animation:spin 6s linear infinite;box-shadow:0 0 18px rgba(255,255,255,.55),0 0 60px rgba(255,255,255,.22)}
+@keyframes spin{to{--a:360deg}}
+.inner{background:#000;border-radius:16px;padding:24px 40px 36px}
+.term{border:1px solid var(--line);border-radius:10px;padding:26px 28px 40px;position:relative;overflow:hidden}
+.top{display:flex;justify-content:space-between;font-size:12px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#fff;margin-right:10px;animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.25;box-shadow:0 0 10px #fff}}
+.prompt{margin:22px 0 0;font-size:12px}
+h1{font-size:clamp(34px,8vw,58px);line-height:1.1;margin:10px 0 6px;font-weight:700;letter-spacing:.01em;text-shadow:0 0 18px rgba(255,255,255,.45)}
+.cur{display:inline-block;width:.26em;height:.9em;background:#fff;margin-left:.2em;vertical-align:-.08em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.role{font-size:16px;margin:8px 0 18px}
+.lead{max-width:640px;margin:0;font-size:13px}
+.logo{position:absolute;right:30px;top:96px;width:100px}
+.logo path{stroke-dasharray:140;stroke-dashoffset:140;animation:draw 1.4s .4s ease forwards}
+.logo .u{animation-delay:1.1s}
+@keyframes draw{to{stroke-dashoffset:0}}
+.logo .u{stroke-dasharray:60;stroke-dashoffset:60}
+section{margin-top:44px}
+.h{display:flex;align-items:center;gap:16px;font-size:16px;font-weight:500}
+.h i{flex:1;height:1px;background:#fff;box-shadow:0 0 8px #fff;transform:scaleX(0);transform-origin:left;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.h small{font-size:11px;font-weight:400}
+.in .h i{transform:scaleX(1)}
+.rv{opacity:0;filter:blur(6px);transition:opacity .8s .15s,filter .8s .15s}
+.in .rv{opacity:1;filter:none}
+p{margin:16px 0 0}
+.tbl{margin-top:16px;border:1px solid #fff;border-radius:10px;overflow:hidden}
+.row{display:grid;grid-template-columns:minmax(120px,220px) 1fr;gap:12px;padding:10px 18px;border-top:1px solid #fff;font-size:13px;transition:background .3s,text-shadow .3s}
+.row:first-child{border-top:0}
+.row:hover{background:#111;text-shadow:0 0 10px #fff}
+.row span:first-child{font-size:12px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:20px}
+.card{position:relative;border:1px solid #fff;border-radius:10px;padding:18px;display:flex;flex-direction:column;min-height:190px;
+background:radial-gradient(180px circle at var(--x,50%) var(--y,0%),rgba(255,255,255,.14),transparent 70%);transition:box-shadow .3s,transform .3s}
+.card:hover{box-shadow:0 0 16px rgba(255,255,255,.6),inset 0 0 14px rgba(255,255,255,.12);transform:translateY(-3px)}
+.card .t{display:flex;justify-content:space-between;font-size:11px}
+.card h3{font-size:16px;margin:16px 0 4px;font-weight:500}
+.card p{margin:0 0 auto;font-size:12px;line-height:1.7}
+.card footer{border-top:1px solid #fff;margin-top:16px;padding-top:12px;font-size:11px}
+a.card{border-bottom:1px solid #fff;color:#fff}.vis{display:block;max-width:100%}.note{font-size:11px;margin-top:14px}
+ul{list-style:none;padding:0;margin:14px 0 0}
+li{font-size:13px;margin:6px 0}
+li b{display:inline-block;width:3ch;font-weight:400}
+li:hover b{text-shadow:0 0 10px #fff}
+.links{display:flex;flex-wrap:wrap;gap:12px 36px;margin-top:18px;font-size:12px}
+a{color:#fff;text-decoration:none;border-bottom:1px solid transparent;transition:text-shadow .3s,border-color .3s}
+a:hover,a:focus-visible{text-shadow:0 0 12px #fff;border-color:#fff;outline:0}
+hr{border:0;border-top:1px solid #fff;margin:44px 0 22px}
+@media (max-width:640px){.inner{padding:14px}.logo{display:none}.row{grid-template-columns:1fr;gap:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;filter:none}.h i{transform:none}.logo path{stroke-dashoffset:0}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<main class="frame"><div class="inner">
+<div class="term">
+  <div class="top"><span><span class="dot"></span>README.md / yatharth2soni</span><span>UTF-8</span></div>
+  <p class="prompt">$ whoami</p>
+  <h1><span id="name"></span><span class="cur"></span></h1>
+  <div class="role">&gt; Open Source Contributor</div>
+  <p class="lead" style="margin:0">Computer Science student who enjoys solving problems, building software, and learning by contributing to real-world codebases.</p>
+  <svg class="logo" viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="3" style="filter:drop-shadow(0 0 6px #fff)"><path d="M6 6 L44 40 L6 76"/><path class="u" d="M54 82 H96"/></svg>
+</div>
+
+<section class="sec"><div class="h">❯ cat about.md<i></i><small>ABOUT</small></div><p class="rv">I’m a Computer Science student who enjoys solving problems, building software, and learning by contributing to real-world codebases.</p><ul class="rv"><li><b>[+]</b>Improving my Data Structures &amp; Algorithms and software engineering skills</li><li><b>[+]</b>Interested in web development, backend systems, and AI/ML</li><li><b>[+]</b>Learning open source through issues, pull requests, reviews, tests, and docs</li><li><b>[+]</b>Build consistently, learn from reviews, and keep improving</li></ul></section>
+<section class="sec"><div class="h">❯ ls ./toolkit<i></i><small>TECH STACK</small></div><div class="tbl rv"><div class="row"><span>Languages</span><span>C++ / C / Java / Python / JavaScript / TypeScript / MySQL</span></div><div class="row"><span>Frontend</span><span>React / Vite / Tailwind</span></div><div class="row"><span>Backend &amp; data</span><span>Node.js / NestJS / PostgreSQL / Prisma</span></div><div class="row"><span>Developer tools</span><span>Git / GitHub / VS Code</span></div></div></section>
+<section class="sec"><div class="h">❯ ls ./open-source<i></i><small>MERGED &amp; OPEN PRs</small></div><p class="rv">I like contributing to existing projects, understanding unfamiliar codebases, and making focused improvements.</p><div class="cards rv"><a class="card" href="https://github.com/wassim-azi/agy-powerline/pull/36"><div class="t"><span>◈</span><span>MERGED</span></div><h3>agy-powerline</h3><p>Added the Catppuccin Macchiato dark theme, including palette registration, tests, and documentation updates.</p><footer>Merged PR #36 ↗</footer></a><a class="card" href="https://github.com/agilepathway/label-checker/pull/732"><div class="t"><span>◈</span><span>MERGED</span></div><h3>label-checker</h3><p>Updated GitHub Copilot session instructions to run npm ci before making changes or running checks.</p><footer>Merged PR #732 ↗</footer></a><a class="card" href="https://github.com/freeCodeCamp/freeCodeCamp/pull/71054"><div class="t"><span>◈</span><span>MERGED</span></div><h3>freeCodeCamp</h3><p>Fixed spacing in a curriculum quiz question.</p><footer>Merged PR #71054 ↗</footer></a><a class="card" href="https://github.com/swapnildahiphale/OpenSRE/pull/88"><div class="t"><span>◈</span><span>OPEN</span></div><h3>OpenSRE</h3><p>Worked on remote-agent connection checks, timeout handling, security protections, and tests.</p><footer>Open PR #88 ↗</footer></a></div></section>
+<section class="sec"><div class="h">❯ ls ./projects<i></i><small>PROJECTS</small></div><div class="cards rv"><a class="card" href="https://github.com/yatharth2soni/final_sih"><div class="t"><span>◈</span><span>SIH</span></div><h3>Khanan Suraksha</h3><p>A bilingual mining-safety and governance platform for reporting, inspections, compliance workflows, and geo-tagged field observations.</p><footer>React · NestJS · PostgreSQL · PostGIS</footer></a><a class="card" href="https://github.com/yatharth2soni/CF_ally"><div class="t"><span>◈</span><span>ANALYTICS</span></div><h3>CF Ally</h3><p>A competitive-programming analytics dashboard focused on contest trends, performance insights, topic coverage, and problem-solving consistency.</p><footer>React · TypeScript · Chart.js</footer></a></div></section>
+<section class="sec"><div class="h">❯ github --stats<i></i><small>ACTIVITY</small></div><img class="rv vis" src="assets/stats.svg" alt="stats" style="width:100%"><div style="height:14px"></div><img class="rv vis" src="assets/heatmap.svg" alt="heatmap" style="width:100%"><div style="height:14px"></div><div class="cards rv" style="margin-top:0"><img class="rv vis" src="assets/years.svg" alt="years" style="width:100%"><img class="rv vis" src="assets/langs.svg" alt="langs" style="width:100%"></div></section>
+<section class="sec"><div class="h">❯ cat focus.txt<i></i><small>CURRENT FOCUS</small></div><ul class="rv"><li><b>[+]</b>Practicing data structures &amp; algorithms (DSA)</li><li><b>[+]</b>Solving problems consistently and learning patterns</li><li><b>[+]</b>Building full-stack projects</li><li><b>[+]</b>Improving tests, documentation and maintainability</li><li><b>[+]</b>Learning from reviews and contributing upstream</li></ul></section>
+<hr>
+<section class="sec"><div class="h" style="font-weight:400">❯ Let’s connect<i style="display:none"></i></div>
+<div class="links rv"><a href="https://github.com/yatharth2soni">GitHub ↗</a><a href="https://www.linkedin.com/in/yatharth-soni-85b826378/">LinkedIn ↗</a><a href="https://github.com/search?q=author%3Ayatharth2soni&amp;type=pullrequests">Open source PRs ↗</a></div>
+<div class="note rv" style="margin-top:22px">Open to hackathon teams, open-source collaboration and interesting problems.</div></section>
+</div></main>
+<script>
+(function(){
+var n="YATHARTH SONI",el=document.getElementById("name"),i=0;
+if(matchMedia("(prefers-reduced-motion:reduce)").matches){el.textContent=n}
+else(function t(){el.textContent=n.slice(0,++i);if(i<n.length)setTimeout(t,110)})();
+var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}})},{threshold:.25});
+document.querySelectorAll(".sec").forEach(function(s){io.observe(s)});
+var bar=document.getElementById("bar");
+addEventListener("scroll",function(){var h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight||1)*100)+"%"},{passive:true});
+document.querySelectorAll(".card").forEach(function(c){c.addEventListener("pointermove",function(e){var r=c.getBoundingClientRect();c.style.setProperty("--x",(e.clientX-r.left)+"px");c.style.setProperty("--y",(e.clientY-r.top)+"px")})});
+})();
+</script>
+</body>
+</html>
