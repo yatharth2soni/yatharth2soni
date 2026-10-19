@@ -1,7 +1,7 @@
 <div align="center">
 
-<!-- Full-profile circular reveal: this GIF is a summary of the sections below. -->
-<img src="assets/profile-intro.gif" width="100%" alt="A small bright white circle expands to reveal a monochrome terminal dashboard with Yatharth Soni, BTech CSE student, selected projects, open-source activity, and a DSA problem-solving focus." />
+<!-- Compact circular reveal for the header only. All information below is live Markdown and remains clickable. -->
+<img src="assets/profile-intro.gif" width="100%" alt="A small white circle expands into a glowing monochrome terminal banner introducing Yatharth Soni, BTech CSE student." />
 
 [![GitHub](https://img.shields.io/badge/GitHub-yatharth2soni-white?style=for-the-badge&logo=github&logoColor=white&labelColor=000000)](https://github.com/yatharth2soni)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-white?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=000000)](https://www.linkedin.com/in/yatharth-soni-85b826378/)
@@ -13,11 +13,10 @@
 
 ### `❯ cat about.md`
 
-I'm **Yatharth Soni**, a **BTech Computer Science student at LNMIIT** interested in practical software projects, problem-solving, and open-source development. I enjoy exploring unfamiliar codebases and improving them through features, bug fixes, tests, and documentation.
+I'm **Yatharth Soni**, a **BTech Computer Science student at LNMIIT** interested in practical projects, problem-solving, and open-source development. I enjoy exploring unfamiliar codebases and improving them through focused features, bug fixes, tests, themes, and documentation.
 
 - **Current focus:** Data Structures & Algorithms (DSA) and practising problems consistently.
-- **Community:** Phoenix Club, LNMIIT.
-- **Open source:** Learning from maintainers and contributing fixes, features, tests, themes, and documentation.
+- **Open source:** Learning from maintainers, responding to reviews, and contributing improvements upstream.
 - **Approach:** Keep learning, write maintainable code, and turn feedback into improvements.
 
 ---
@@ -52,7 +51,7 @@ A bilingual mining-safety and governance platform for reporting, inspections, co
 
 **02 / CF Ally**
 
-A programming analytics dashboard focused on contest trends, performance insights, topic coverage, and problem-solving consistency.
+A competitive-programming analytics dashboard focused on contest trends, performance insights, topic coverage, and problem-solving consistency.
 
 `React` `TypeScript` `Chart.js`
 
@@ -66,28 +65,30 @@ A programming analytics dashboard focused on contest trends, performance insight
 
 ### `❯ git log --oneline ./contributions`
 
-I contribute to real codebases through focused fixes, tests, themes, and documentation. The repository and pull-request tables below refresh automatically from GitHub's public API.
+I contribute to real codebases through focused fixes, tests, themes, and documentation. The repository and pull-request tables below are refreshed automatically from GitHub's public API.
 
 <!-- AUTO_PROFILE_START -->
 
 <div align="center">
+
 **PUBLIC REPOSITORIES: 10**　 **STARS: 0**　 **OPEN PRs: 2**　 **MERGED PRs: 3**
+
 </div>
 
 #### `./repositories` — recently pushed public repositories
 
 | REPOSITORY | DESCRIPTION | LANGUAGE | ⭐ | LAST PUSH |
 |:--|:--|:--|--:|:--|
-| [label-checker](https://github.com/yatharth2soni/label-checker) | Check pull requests for the presence or absence of specified labels | — | 0 | 2026-10-19 |
-| [agy-powerline](https://github.com/yatharth2soni/agy-powerline) | Fast, configurable statusline for Google Antigravity CLI (agy): live Gemini 5h/… | — | 0 | 2026-10-18 |
-| [gearbox-frontend](https://github.com/yatharth2soni/gearbox-frontend) | PedAL GEARBOx web UI app | — | 0 | 2026-10-17 |
-| [OpenSRE](https://github.com/yatharth2soni/OpenSRE) | OpenSRE — the memory-first AI SRE. Self-hosted incident investigation with epis… | — | 0 | 2026-10-17 |
-| [freeCodeCamp](https://github.com/yatharth2soni/freeCodeCamp) | freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming… | — | 0 | 2026-10-17 |
-| [final_sih](https://github.com/yatharth2soni/final_sih) | No description added yet. | JavaScript | 0 | 2026-09-01 |
-| [sih4](https://github.com/yatharth2soni/sih4) | No description added yet. | Python | 0 | 2026-08-27 |
-| [hackathon3](https://github.com/yatharth2soni/hackathon3) | No description added yet. | Python | 0 | 2026-08-26 |
-| [codes_sih](https://github.com/yatharth2soni/codes_sih) | No description added yet. | TypeScript | 0 | 2026-08-25 |
-| [sih](https://github.com/yatharth2soni/sih) | No description added yet. | TypeScript | 0 | 2026-08-25 |
+| [label-checker](https://github.com/yatharth2soni/label-checker) | Label-checking tool; contributed Copilot session-start guidance | — | 0 | 2026-10-19 |
+| [agy-powerline](https://github.com/yatharth2soni/agy-powerline) | Terminal statusline; contributed a Catppuccin Macchiato theme | — | 0 | 2026-10-18 |
+| [gearbox-frontend](https://github.com/yatharth2soni/gearbox-frontend) | Frontend prototype; open documentation PR | — | 0 | 2026-10-17 |
+| [OpenSRE](https://github.com/yatharth2soni/OpenSRE) | AI SRE tool; contributed remote-agent connection checks | — | 0 | 2026-10-17 |
+| [freeCodeCamp](https://github.com/yatharth2soni/freeCodeCamp) | Open-source curriculum; contributed a quiz text correction | — | 0 | 2026-10-17 |
+| [final_sih](https://github.com/yatharth2soni/final_sih) | Khanan Suraksha mining-safety project | JavaScript | 0 | 2026-09-01 |
+| [sih4](https://github.com/yatharth2soni/sih4) | Hackathon project repository | Python | 0 | 2026-08-27 |
+| [hackathon3](https://github.com/yatharth2soni/hackathon3) | Hackathon project repository | Python | 0 | 2026-08-26 |
+| [codes_sih](https://github.com/yatharth2soni/codes_sih) | Hackathon project code | TypeScript | 0 | 2026-08-25 |
+| [sih](https://github.com/yatharth2soni/sih) | Hackathon project repository | TypeScript | 0 | 2026-08-25 |
 
 [View all public repositories →](https://github.com/yatharth2soni?tab=repositories)
 
@@ -95,13 +96,13 @@ I contribute to real codebases through focused fixes, tests, themes, and documen
 
 | REPOSITORY | PULL REQUEST | STATUS | UPDATED |
 |:--|:--|:--:|:--|
-| [label-checker](https://github.com/agilepathway/label-checker) | [Run npm ci at start of Copilot sessions](<https://github.com/agilepathway/label-checker/pull/732>) | **MERGED** | 2026-10-19 |
-| [agy-powerline](https://github.com/wassim-azi/agy-powerline) | [feat(theme): add Catppuccin Macchiato dark theme (#33)](<https://github.com/wassim-azi/agy-powerline/pull/36>) | **MERGED** | 2026-10-18 |
-| [gearbox-frontend](https://github.com/chicagopcdc/gearbox-frontend) | [docs: update GEARBOx README for current frontend](<https://github.com/chicagopcdc/gearbox-frontend/pull/416>) | **OPEN** | 2026-10-17 |
-| [OpenSRE](https://github.com/swapnildahiphale/OpenSRE) | [fix: verify remote agent connection status](<https://github.com/swapnildahiphale/OpenSRE/pull/88>) | **OPEN** | 2026-10-17 |
-| [freeCodeCamp](https://github.com/freeCodeCamp/freeCodeCamp) | [fix(curriculum): add space in symmetric difference quiz question](<https://github.com/freeCodeCamp/freeCodeCamp/pull/71054>) | **MERGED** | 2026-10-17 |
+| [freeCodeCamp](https://github.com/freeCodeCamp/freeCodeCamp) | [Fix curriculum quiz spacing #71054](https://github.com/freeCodeCamp/freeCodeCamp/pull/71054) | **MERGED** | 2026-10-17 |
+| [agy-powerline](https://github.com/wassim-azi/agy-powerline) | [Add Catppuccin Macchiato theme #36](https://github.com/wassim-azi/agy-powerline/pull/36) | **MERGED** | 2026-10-18 |
+| [label-checker](https://github.com/agilepathway/label-checker) | [Run npm ci at start of Copilot sessions #732](https://github.com/agilepathway/label-checker/pull/732) | **MERGED** | 2026-10-19 |
+| [OpenSRE](https://github.com/swapnildahiphale/OpenSRE) | [Verify remote-agent connection status #88](https://github.com/swapnildahiphale/OpenSRE/pull/88) | **OPEN** | 2026-10-17 |
+| [GEARBOx frontend](https://github.com/chicagopcdc/gearbox-frontend) | [Update frontend README #416](https://github.com/chicagopcdc/gearbox-frontend/pull/416) | **OPEN** | 2026-10-17 |
 
-<sub>Generated from GitHub's public API · refreshed by the hourly workflow.</sub>
+<sub>Seeded from public profile activity on 19 October 2026. The hourly workflow replaces this section with current public results.</sub>
 
 <!-- AUTO_PROFILE_END -->
 
@@ -111,7 +112,7 @@ I contribute to real codebases through focused fixes, tests, themes, and documen
 
 <div align="center">
 
-<img src="assets/contribution-graph.svg" width="100%" alt="GitHub contribution calendar generated from your real public contribution data by the scheduled workflow." />
+<img src="assets/contribution-graph.svg" width="100%" alt="GitHub contribution calendar generated from public contribution data by the scheduled workflow." />
 
 </div>
 
@@ -119,11 +120,11 @@ I contribute to real codebases through focused fixes, tests, themes, and documen
 
 <div align="center">
 
-<img src="assets/contribution-pie.svg" width="100%" alt="Multicolor pie chart showing the distribution of the most recently updated public pull requests by repository. It refreshes automatically from GitHub." />
+<img src="assets/contribution-pie.svg" width="100%" alt="Multicolour pie chart showing recent public pull requests grouped by repository." />
 
-<img src="assets/github-stats.svg" width="100%" alt="GitHub public repository and pull-request metrics generated by the scheduled workflow." />
+<img src="assets/github-stats.svg" width="100%" alt="Public repository and pull-request metrics updated by GitHub Actions." />
 
-<img src="assets/language-stats.svg" width="100%" alt="Language distribution across visible public repositories, generated by the scheduled workflow." />
+<img src="assets/language-stats.svg" width="100%" alt="Language distribution across visible public repositories." />
 
 </div>
 
