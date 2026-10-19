@@ -1,14 +1,14 @@
 <div align="center">
 
-<!-- 1. HIGH-TECH ANIMATED TERMINAL BANNER (Full GIF Animation) -->
+<!-- High-Tech Animated Monochrome Terminal Banner (Animated GIF) -->
 <a href="https://github.com/yatharth2soni">
-  <img src="https://raw.githubusercontent.com/yatharth2soni/yatharth2soni/main/assets/profile-intro.gif" width="100%" alt="Yatharth Soni - Animated Terminal Showcase" />
+  <img src="https://raw.githubusercontent.com/yatharth2soni/yatharth2soni/main/assets/profile-intro.gif" width="100%" alt="Yatharth Soni - Terminal Animation" />
 </a>
 
 <br/>
 
-<!-- 2. LIVE DYNAMIC TYPING SUBTITLE -->
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=20&pause=1200&color=FFFFFF&center=true&vCenter=true&width=680&height=50&lines=Yatharth+Soni+%7C+Computer+Science+Student;DSA+%E2%80%A2+Problem+Solving+%E2%80%A2+Open+Source;Khanan+Suraksha+%26+CF+Ally+Builder;%3E+cat+about.md+%26%26+ls+.%2Ftoolkit" alt="Terminal Typing Showcase" />
+<!-- Live Dynamic Typing Subtitle -->
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=20&pause=1200&color=FFFFFF&center=true&vCenter=true&width=680&height=50&lines=Yatharth+Soni+%7C+Computer+Science+Student;DSA+%E2%80%A2+Problem+Solving+%E2%80%A2+Open+Source;Khanan+Suraksha+%26+CF+Ally+Builder;%3E+cat+about.md+%26%26+ls+.%2Ftoolkit" alt="Yatharth Soni - Terminal Showcase" />
 
 <br/>
 
@@ -48,7 +48,6 @@ I'm **Yatharth Soni**, a **Computer Science student** interested in practical pr
 <td width="50%" valign="top">
 
 **01 / Khanan Suraksha**
-
 A bilingual mining-safety and governance platform for reporting, inspections, compliance workflows, and geo-tagged field observations.
 
 `React` `NestJS` `PostgreSQL` `PostGIS`
@@ -59,7 +58,6 @@ A bilingual mining-safety and governance platform for reporting, inspections, co
 <td width="50%" valign="top">
 
 **02 / CF Ally**
-
 A competitive-programming analytics dashboard focused on contest trends, performance insights, topic coverage, and problem-solving consistency.
 
 `React` `TypeScript` `Chart.js`
@@ -72,7 +70,36 @@ A competitive-programming analytics dashboard focused on contest trends, perform
 
 ---
 
-### `❯ cat contributions.log`
+### `❯ git log --oneline ./contributions`
+
+I contribute to real codebases through focused fixes, tests, themes, and documentation. The repository and pull-request tables below reflect key public open-source contributions.
+
+<!-- AUTO_PROFILE_START -->
+
+<div align="center">
+
+**PUBLIC REPOSITORIES: 10**　 **STARS: 0**　 **OPEN PRs: 2**　 **MERGED PRs: 3**
+
+</div>
+
+#### `./repositories` — recently pushed public repositories
+
+| REPOSITORY | DESCRIPTION | ⭐ | LAST PUSH |
+|:--|:--|--:|:--|
+| [label-checker](https://github.com/yatharth2soni/label-checker) | Label-checking tool; contributed Copilot session-start guidance | 0 | 2026-10-19 |
+| [agy-powerline](https://github.com/yatharth2soni/agy-powerline) | Terminal statusline; contributed a Catppuccin Macchiato theme | 0 | 2026-10-18 |
+| [gearbox-frontend](https://github.com/yatharth2soni/gearbox-frontend) | Frontend prototype; open documentation PR | 0 | 2026-10-17 |
+| [OpenSRE](https://github.com/yatharth2soni/OpenSRE) | AI SRE tool; contributed remote-agent connection checks | 0 | 2026-10-17 |
+| [freeCodeCamp](https://github.com/yatharth2soni/freeCodeCamp) | Open-source curriculum; contributed a quiz text correction | 0 | 2026-10-17 |
+| [final_sih](https://github.com/yatharth2soni/final_sih) | Khanan Suraksha mining-safety project | 0 | 2026-09-01 |
+| [sih4](https://github.com/yatharth2soni/sih4) | Hackathon project repository | 0 | 2026-08-27 |
+| [hackathon3](https://github.com/yatharth2soni/hackathon3) | Hackathon project repository | 0 | 2026-08-26 |
+| [codes_sih](https://github.com/yatharth2soni/codes_sih) | Hackathon project code | 0 | 2026-08-25 |
+| [sih](https://github.com/yatharth2soni/sih) | Hackathon project repository | 0 | 2026-08-25 |
+
+[View all public repositories →](https://github.com/yatharth2soni?tab=repositories)
+
+#### `./pull-requests` — latest public pull-request activity
 
 | REPOSITORY | PULL REQUEST | STATUS | UPDATED |
 |:--|:--|:--:|:--|
@@ -81,6 +108,8 @@ A competitive-programming analytics dashboard focused on contest trends, perform
 | [label-checker](https://github.com/agilepathway/label-checker) | [Run npm ci at start of Copilot sessions #732](https://github.com/agilepathway/label-checker/pull/732) | **MERGED** | 2026-10-19 |
 | [OpenSRE](https://github.com/swapnildahiphale/OpenSRE) | [Verify remote-agent connection status #88](https://github.com/swapnildahiphale/OpenSRE/pull/88) | **OPEN** | 2026-10-17 |
 | [GEARBOx frontend](https://github.com/chicagopcdc/gearbox-frontend) | [Update frontend README #416](https://github.com/chicagopcdc/gearbox-frontend/pull/416) | **OPEN** | 2026-10-17 |
+
+<!-- AUTO_PROFILE_END -->
 
 ---
 
