@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Yatharth Soni — circular profile reveal preview</title>
+<style>
+:root{--bg:#000;--fg:#f2f2f2;--dim:#929292;--line:#bdbdbd;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"DejaVu Sans Mono",monospace;--glow:0 0 8px rgba(255,255,255,.65),0 0 24px rgba(255,255,255,.24)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#000;color:var(--fg);font:14px/1.75 var(--mono);overflow-x:hidden}
+#grid{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.62;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse at center,#000,transparent 85%)}
+main{position:relative;z-index:1;max-width:980px;margin:0 auto;padding:28px 24px 64px}
+.frame{border:1px solid #ddd;border-radius:16px;padding:12px;box-shadow:0 0 10px rgba(255,255,255,.55),0 0 28px rgba(255,255,255,.18)}.frame-inner{border:1px solid #aaa;border-radius:10px;padding:20px 24px 26px;background:#000}
+.meta{display:flex;justify-content:space-between;border-bottom:1px solid #666;padding-bottom:10px;font-size:11px;color:#ccc}.pulse{display:inline-block;width:7px;height:7px;border-radius:50%;background:#fff;box-shadow:var(--glow);margin-right:10px;animation:pulse 1.6s infinite}@keyframes pulse{50%{opacity:.35}}
+.prompt{font-size:13px;margin:18px 0 4px}.name{font:800 clamp(36px,7vw,62px)/1.08 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:-1.5px;text-shadow:var(--glow);margin:10px 0}.cursor{display:inline-block;width:.27em;height:.82em;background:#fff;margin-left:.12em;vertical-align:-.02em;box-shadow:var(--glow);animation:blink 1s steps(1) infinite}@keyframes blink{50%{opacity:0}}
+.subtitle{font-size:18px;font-weight:700;margin:10px 0}.bio{max-width:710px;color:#ddd}.tags{font-size:11px;color:#bbb;letter-spacing:.7px}
+nav{display:flex;gap:18px;flex-wrap:wrap;padding:18px 0 4px}a{color:#fff;text-decoration:none;border-bottom:1px solid #666}a:hover{text-shadow:var(--glow);border-color:#fff}
+.section{margin-top:42px}.section h2{display:flex;gap:12px;align-items:center;font-size:16px;font-weight:600;margin:0 0 16px}.section h2:after{content:"";height:1px;background:#9a9a9a;flex:1}.section h2 small{font-size:10px;color:#bbb;font-weight:400}
+.stack{border:1px solid #aaa;border-radius:6px}.stack div{display:grid;grid-template-columns:170px 1fr;gap:20px;padding:11px 15px;border-top:1px solid #666;font-size:12px}.stack div:first-child{border-top:0}.muted{color:#aaa}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.card{border:1px solid #bcbcbc;border-radius:7px;padding:17px;min-height:170px;transition:transform .25s,box-shadow .25s}.card:hover{transform:translateY(-3px);box-shadow:var(--glow)}.card small{font-size:10px;color:#aaa}.card h3{font-size:16px;margin:18px 0 8px}.card p{font-size:12px;color:#ddd;margin:0 0 12px}.tech{border-top:1px solid #666;padding-top:10px;color:#aaa;font-size:10px}
+.prs{border:1px solid #aaa;border-radius:6px;overflow:hidden}.pr{display:grid;grid-template-columns:170px 1fr 75px;gap:12px;padding:12px 15px;border-top:1px solid #666;font-size:12px}.pr:first-child{border-top:0}.status{white-space:nowrap;text-align:right}.focus{border:1px solid #aaa;border-radius:6px;padding:15px 18px;font-size:12px}.focus div{padding:4px 0}.contact{border-top:1px solid #aaa;margin-top:46px;padding-top:20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px;color:#ccc}
+#circleReveal{position:fixed;inset:0;width:100%;height:100%;z-index:100;pointer-events:none;transition:opacity .65s ease;background:#000}
+#replay{position:fixed;right:18px;bottom:18px;z-index:3;background:#000;color:#fff;border:1px solid #aaa;padding:8px 12px;font:11px var(--mono);cursor:pointer}#replay:hover{box-shadow:var(--glow)}
+@media(max-width:620px){main{padding:16px 12px 44px}.frame-inner{padding:15px}.stack div{grid-template-columns:1fr;gap:3px}.cards{grid-template-columns:1fr}.pr{grid-template-columns:1fr auto;gap:4px}.pr a:nth-child(2){grid-column:1}.pr .status{grid-column:2;grid-row:1}.name{letter-spacing:-1px}.bio{font-size:13px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}#circleReveal{display:none}}
+</style>
+</head>
+<body>
+<div id="grid"></div>
+<main>
+  <header class="frame">
+    <div class="frame-inner">
+      <div class="meta"><span><i class="pulse"></i>README.md / profile</span><span>UTF-8</span></div>
+      <div class="prompt">$ whoami</div>
+      <h1 class="name">YATHARTH SONI<span class="cursor"></span></h1>
+      <div class="subtitle">BTech CSE student</div>
+      <p class="bio">I build practical projects, explore real codebases, and contribute fixes, tests, and documentation. I keep learning through DSA practice, projects, and open-source work.</p>
+      <div class="tags">DSA / PROBLEM SOLVING / PROJECTS / OPEN SOURCE</div>
+      <nav><a href="https://github.com/yatharth2soni">GitHub ↗</a><a href="https://www.linkedin.com/in/yatharth-soni-85b826378/">LinkedIn ↗</a><a href="https://github.com/yatharth2soni?tab=repositories">Repositories ↗</a></nav>
+    </div>
+  </header>
+
+  <section class="section">
+    <h2>❯ cat about.md <small>ABOUT</small></h2>
+    <p>I'm a BTech Computer Science student at LNMIIT interested in practical software projects, problem-solving, and open-source development. I enjoy exploring unfamiliar codebases and improving them through features, bug fixes, tests, and documentation.</p>
+  </section>
+
+  <section class="section">
+    <h2>❯ ls ./toolkit <small>TECH STACK</small></h2>
+    <div class="stack">
+      <div><span class="muted">Languages</span><span>C · C++ · Java · Python · JavaScript · TypeScript · SQL</span></div>
+      <div><span class="muted">Frontend</span><span>React · Vite · Tailwind CSS</span></div>
+      <div><span class="muted">Backend &amp; data</span><span>Node.js · NestJS · PostgreSQL · PostGIS · Prisma · MySQL</span></div>
+      <div><span class="muted">Developer tools</span><span>Git · GitHub · VS Code</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>❯ ls ./projects <small>SELECTED WORK</small></h2>
+    <div class="cards">
+      <article class="card"><small>PROJECT / 01</small><h3>Khanan Suraksha</h3><p>A bilingual mining-safety and governance platform for reporting, inspections, compliance workflows, and geo-tagged field observations.</p><div class="tech">React · NestJS · PostgreSQL · PostGIS<br><br><a href="https://github.com/yatharth2soni/final_sih">View repository ↗</a></div></article>
+      <article class="card"><small>PROJECT / 02</small><h3>CF Ally</h3><p>A programming analytics dashboard focused on contest trends, performance insights, topic coverage, and problem-solving consistency.</p><div class="tech">React · TypeScript · Chart.js<br><br><a href="https://github.com/yatharth2soni?tab=repositories">Browse project repositories ↗</a></div></article>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>❯ git log --oneline ./contributions <small>OPEN SOURCE</small></h2>
+    <div class="prs">
+      <div class="pr"><span>freeCodeCamp</span><a href="https://github.com/freeCodeCamp/freeCodeCamp/pull/71054">Fix curriculum quiz spacing #71054</a><span class="status">MERGED</span></div>
+      <div class="pr"><span>agy-powerline</span><a href="https://github.com/wassim-azi/agy-powerline/pull/36">Add Catppuccin Macchiato theme #36</a><span class="status">MERGED</span></div>
+      <div class="pr"><span>label-checker</span><a href="https://github.com/agilepathway/label-checker/pull/732">Run npm ci session guidance #732</a><span class="status">MERGED</span></div>
+      <div class="pr"><span>OpenSRE</span><a href="https://github.com/swapnildahiphale/OpenSRE/pull/88">Verify remote-agent connection #88</a><span class="status">OPEN</span></div>
+      <div class="pr"><span>GEARBOx frontend</span><a href="https://github.com/chicagopcdc/gearbox-frontend/pull/416">Update frontend README #416</a><span class="status">OPEN</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>❯ git --contribution-mix <small>RECENT PUBLIC PRs</small></h2>
+    <p class="muted">Multicolor distribution of recent public pull requests by repository. This chart refreshes from GitHub activity.</p>
+    <div class="frame" style="padding:8px;border-radius:8px;box-shadow:none"><img src="assets/contribution-pie.svg" alt="Multicolor pie chart of recent public pull requests by repository" style="display:block;width:100%;height:auto" /></div>
+  </section>
+
+  <section class="section">
+    <h2>❯ cat focus.txt <small>CURRENT FOCUS</small></h2>
+    <div class="focus"><div>[+] Practicing data structures &amp; algorithms (DSA)</div><div>[+] Solving problems consistently and learning patterns</div><div>[+] Building full-stack projects</div><div>[+] Improving tests, documentation, and maintainability</div></div>
+  </section>
+
+  <footer class="contact"><span>&gt; exit 0 <span class="cursor"></span></span><span>END OF FILE · THANKS FOR VISITING</span></footer>
+</main>
+<button id="replay" type="button">REPLAY CIRCLE REVEAL ↻</button>
+<canvas id="circleReveal" aria-hidden="true"></canvas>
+<script>
+(function(){
+  const canvas=document.getElementById('circleReveal');
+  const ctx=canvas.getContext('2d');
+  let raf=0;
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function run(){
+    if(reduced){canvas.style.display='none';return;}
+    if(raf)cancelAnimationFrame(raf);
+    canvas.style.display='block';canvas.style.opacity='1';
+    const dpr=Math.min(window.devicePixelRatio||1,2);
+    const w=window.innerWidth,h=window.innerHeight;
+    canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);
+    canvas.style.width=w+'px';canvas.style.height=h+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    const cx=w/2,cy=h/2,maxR=Math.hypot(w,h)*0.58,duration=2550,start=performance.now();
+    function frame(now){
+      const p=Math.min(1,(now-start)/duration);
+      const e=p*p*(3-2*p);
+      const r=2+(maxR-2)*e;
+      ctx.clearRect(0,0,w,h);
+      ctx.fillStyle='#000';ctx.fillRect(0,0,w,h);
+      // Punch a growing circular window through the black overlay to reveal all page content beneath it.
+      ctx.save();ctx.globalCompositeOperation='destination-out';ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.fill();ctx.restore();
+      // Bright white moving boundary, with restrained white bloom.
+      const pulse=0.78+0.22*Math.sin(p*Math.PI*5);
+      ctx.save();ctx.shadowColor='rgba(255,255,255,.95)';ctx.shadowBlur=25*pulse;
+      ctx.strokeStyle='rgba(255,255,255,.95)';ctx.lineWidth=2.1;ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.stroke();
+      ctx.shadowBlur=7;ctx.strokeStyle='rgba(255,255,255,.95)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(cx,cy,Math.max(1,r-3),0,Math.PI*2);ctx.stroke();ctx.restore();
+      if(p<1){raf=requestAnimationFrame(frame);}else{canvas.style.transition='opacity .65s ease';canvas.style.opacity='0';setTimeout(()=>{canvas.style.display='none';},700);raf=0;}
+    }
+    raf=requestAnimationFrame(frame);
+  }
+  document.getElementById('replay').addEventListener('click',run);
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});else run();
+})();
+</script>
+</body>
+</html>
