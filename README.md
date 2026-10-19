@@ -1,9 +1,14 @@
 <div align="center">
 
-<!-- Animated Typing Terminal Banner (100% supported & animated on GitHub) -->
+<!-- 1. HIGH-TECH ANIMATED TERMINAL BANNER (Full GIF Animation) -->
 <a href="https://github.com/yatharth2soni">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=24&pause=1200&color=FFFFFF&center=true&vCenter=true&width=680&height=75&lines=Yatharth+Soni+%7C+Computer+Science+Student;DSA+%E2%80%A2+Problem+Solving+%E2%80%A2+Open+Source;Khanan+Suraksha+%26+CF+Ally+Builder;%3E+cat+about.md+%26%26+ls+.%2Ftoolkit" alt="Yatharth Soni - Terminal Showcase" />
+  <img src="https://raw.githubusercontent.com/yatharth2soni/yatharth2soni/main/assets/profile-intro.gif" width="100%" alt="Yatharth Soni - Animated Terminal Showcase" />
 </a>
+
+<br/>
+
+<!-- 2. LIVE DYNAMIC TYPING SUBTITLE -->
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=20&pause=1200&color=FFFFFF&center=true&vCenter=true&width=680&height=50&lines=Yatharth+Soni+%7C+Computer+Science+Student;DSA+%E2%80%A2+Problem+Solving+%E2%80%A2+Open+Source;Khanan+Suraksha+%26+CF+Ally+Builder;%3E+cat+about.md+%26%26+ls+.%2Ftoolkit" alt="Terminal Typing Showcase" />
 
 <br/>
 
@@ -76,6 +81,16 @@ A competitive-programming analytics dashboard focused on contest trends, perform
 | [label-checker](https://github.com/agilepathway/label-checker) | [Run npm ci at start of Copilot sessions #732](https://github.com/agilepathway/label-checker/pull/732) | **MERGED** | 2026-10-19 |
 | [OpenSRE](https://github.com/swapnildahiphale/OpenSRE) | [Verify remote-agent connection status #88](https://github.com/swapnildahiphale/OpenSRE/pull/88) | **OPEN** | 2026-10-17 |
 | [GEARBOx frontend](https://github.com/chicagopcdc/gearbox-frontend) | [Update frontend README #416](https://github.com/chicagopcdc/gearbox-frontend/pull/416) | **OPEN** | 2026-10-17 |
+
+---
+
+### `❯ github --contribution-calendar`
+
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/yatharth2soni/yatharth2soni/main/assets/contribution-graph.svg" width="100%" alt="GitHub contribution calendar" />
+
+</div>
 
 ---
 
