@@ -77,25 +77,23 @@ I contribute to real codebases through focused fixes, tests, themes, and documen
 <!-- AUTO_PROFILE_START -->
 
 <div align="center">
-
 **PUBLIC REPOSITORIES: 10**　 **STARS: 0**　 **OPEN PRs: 2**　 **MERGED PRs: 3**
-
 </div>
 
 #### `./repositories` — recently pushed public repositories
 
-| REPOSITORY | DESCRIPTION | ⭐ | LAST PUSH |
-|:--|:--|--:|:--|
-| [label-checker](https://github.com/yatharth2soni/label-checker) | Label-checking tool; contributed Copilot session-start guidance | 0 | 2026-10-19 |
-| [agy-powerline](https://github.com/yatharth2soni/agy-powerline) | Terminal statusline; contributed a Catppuccin Macchiato theme | 0 | 2026-10-18 |
-| [gearbox-frontend](https://github.com/yatharth2soni/gearbox-frontend) | Frontend prototype; open documentation PR | 0 | 2026-10-17 |
-| [OpenSRE](https://github.com/yatharth2soni/OpenSRE) | AI SRE tool; contributed remote-agent connection checks | 0 | 2026-10-17 |
-| [freeCodeCamp](https://github.com/yatharth2soni/freeCodeCamp) | Open-source curriculum; contributed a quiz text correction | 0 | 2026-10-17 |
-| [final_sih](https://github.com/yatharth2soni/final_sih) | Khanan Suraksha mining-safety project | 0 | 2026-09-01 |
-| [sih4](https://github.com/yatharth2soni/sih4) | Hackathon project repository | 0 | 2026-08-27 |
-| [hackathon3](https://github.com/yatharth2soni/hackathon3) | Hackathon project repository | 0 | 2026-08-26 |
-| [codes_sih](https://github.com/yatharth2soni/codes_sih) | Hackathon project code | 0 | 2026-08-25 |
-| [sih](https://github.com/yatharth2soni/sih) | Hackathon project repository | 0 | 2026-08-25 |
+| REPOSITORY | DESCRIPTION | LANGUAGE | ⭐ | LAST PUSH |
+|:--|:--|:--|--:|:--|
+| [label-checker](https://github.com/yatharth2soni/label-checker) | Check pull requests for the presence or absence of specified labels | — | 0 | 2026-10-19 |
+| [agy-powerline](https://github.com/yatharth2soni/agy-powerline) | Fast, configurable statusline for Google Antigravity CLI (agy): live Gemini 5h/… | — | 0 | 2026-10-18 |
+| [gearbox-frontend](https://github.com/yatharth2soni/gearbox-frontend) | PedAL GEARBOx web UI app | — | 0 | 2026-10-17 |
+| [OpenSRE](https://github.com/yatharth2soni/OpenSRE) | OpenSRE — the memory-first AI SRE. Self-hosted incident investigation with epis… | — | 0 | 2026-10-17 |
+| [freeCodeCamp](https://github.com/yatharth2soni/freeCodeCamp) | freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming… | — | 0 | 2026-10-17 |
+| [final_sih](https://github.com/yatharth2soni/final_sih) | No description added yet. | JavaScript | 0 | 2026-09-01 |
+| [sih4](https://github.com/yatharth2soni/sih4) | No description added yet. | Python | 0 | 2026-08-27 |
+| [hackathon3](https://github.com/yatharth2soni/hackathon3) | No description added yet. | Python | 0 | 2026-08-26 |
+| [codes_sih](https://github.com/yatharth2soni/codes_sih) | No description added yet. | TypeScript | 0 | 2026-08-25 |
+| [sih](https://github.com/yatharth2soni/sih) | No description added yet. | TypeScript | 0 | 2026-08-25 |
 
 [View all public repositories →](https://github.com/yatharth2soni?tab=repositories)
 
@@ -103,11 +101,13 @@ I contribute to real codebases through focused fixes, tests, themes, and documen
 
 | REPOSITORY | PULL REQUEST | STATUS | UPDATED |
 |:--|:--|:--:|:--|
-| [freeCodeCamp](https://github.com/freeCodeCamp/freeCodeCamp) | [Fix curriculum quiz spacing #71054](https://github.com/freeCodeCamp/freeCodeCamp/pull/71054) | **MERGED** | 2026-10-17 |
-| [agy-powerline](https://github.com/wassim-azi/agy-powerline) | [Add Catppuccin Macchiato theme #36](https://github.com/wassim-azi/agy-powerline/pull/36) | **MERGED** | 2026-10-18 |
-| [label-checker](https://github.com/agilepathway/label-checker) | [Run npm ci at start of Copilot sessions #732](https://github.com/agilepathway/label-checker/pull/732) | **MERGED** | 2026-10-19 |
-| [OpenSRE](https://github.com/swapnildahiphale/OpenSRE) | [Verify remote-agent connection status #88](https://github.com/swapnildahiphale/OpenSRE/pull/88) | **OPEN** | 2026-10-17 |
-| [GEARBOx frontend](https://github.com/chicagopcdc/gearbox-frontend) | [Update frontend README #416](https://github.com/chicagopcdc/gearbox-frontend/pull/416) | **OPEN** | 2026-10-17 |
+| [label-checker](https://github.com/agilepathway/label-checker) | [Run npm ci at start of Copilot sessions](<https://github.com/agilepathway/label-checker/pull/732>) | **MERGED** | 2026-10-19 |
+| [agy-powerline](https://github.com/wassim-azi/agy-powerline) | [feat(theme): add Catppuccin Macchiato dark theme (#33)](<https://github.com/wassim-azi/agy-powerline/pull/36>) | **MERGED** | 2026-10-18 |
+| [gearbox-frontend](https://github.com/chicagopcdc/gearbox-frontend) | [docs: update GEARBOx README for current frontend](<https://github.com/chicagopcdc/gearbox-frontend/pull/416>) | **OPEN** | 2026-10-17 |
+| [OpenSRE](https://github.com/swapnildahiphale/OpenSRE) | [fix: verify remote agent connection status](<https://github.com/swapnildahiphale/OpenSRE/pull/88>) | **OPEN** | 2026-10-17 |
+| [freeCodeCamp](https://github.com/freeCodeCamp/freeCodeCamp) | [fix(curriculum): add space in symmetric difference quiz question](<https://github.com/freeCodeCamp/freeCodeCamp/pull/71054>) | **MERGED** | 2026-10-17 |
+
+<sub>Generated from GitHub's public API · refreshed by the hourly workflow.</sub>
 
 <!-- AUTO_PROFILE_END -->
 
