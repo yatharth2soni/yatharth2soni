@@ -1,10 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="100" viewBox="0 0 960 100" role="img" aria-labelledby="t">
-<title id="t">Terminal end-of-file</title>
-<defs><filter id="g"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-<rect x="3" y="3" width="954" height="94" rx="8" fill="#000" stroke="#777"/>
-<text x="24" y="39" fill="#fff" font-family="ui-monospace,Menlo,monospace" font-size="15">&gt; exit 0</text>
-<rect x="95" y="22" width="9" height="23" fill="#fff" filter="url(#g)"><animate attributeName="opacity" values="1;0;1" dur="1.1s" repeatCount="indefinite"/></rect>
-<line x1="24" y1="54" x2="936" y2="54" stroke="#555"/>
-<text x="24" y="78" fill="#aaa" font-family="ui-monospace,Menlo,monospace" font-size="11" letter-spacing="1">END OF FILE</text>
-<text x="936" y="78" text-anchor="end" fill="#fff" font-family="ui-monospace,Menlo,monospace" font-size="11" letter-spacing="1">THANKS FOR VISITING</text>
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="850" height="40" viewBox="0 0 850 40" fill="none">
+  <rect width="850" height="40" rx="6" fill="#000000" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+  <text x="425" y="24" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" fill="rgba(255,255,255,0.5)">
+    [EOF] ─── guest@yatharth2soni:~$ logout ─── Connection to terminal closed.
+  </text>
 </svg>
