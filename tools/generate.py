@@ -96,7 +96,7 @@ merged = sum(1 for p in PRS if p[4] == "MERGED")
 last_year_start = TODAY - dt.timedelta(days=364)
 ly = sum(v[0] for d, v in days.items() if last_year_start.isoformat() <= d <= TODAY.isoformat())
 active = sum(1 for d, v in days.items() if v[0] > 0)
-stats = [(str(sum(totals.values())), "total contributions"), (str(ly), "in the last year"), (str(len(PRS)), "pull requests"), (str(merged), "merged"), (str(active), "active days")]
+stats = [(str(sum(totals.values())), "total contributions"), (str(ly), "in the last year"), (str(len(PRS)), "featured PRs"), (str(merged), "merged"), (str(active), "active days")]
 cw = 960 / len(stats); body = ""
 for i, (v, l) in enumerate(stats):
     cx = cw * i + cw / 2
@@ -250,7 +250,7 @@ for j, (ttl, desc, bdg, url, tech) in enumerate(PROJECTS):
         f'<rect x=".5" y=".5" width="439" height="160" rx="10" fill="none" stroke="#fff" stroke-width="2.5" pathLength="100" stroke-dasharray="14 86" filter="url(#g)"><animate attributeName="stroke-dashoffset" from="0" to="-100" dur="7s" begin="{j*1.3}s" repeatCount="indefinite"/></rect>'
         f'<rect x="20" y="18" width="{len(bdg)*7.4+34:.0f}" height="22" rx="11" fill="none" stroke="#fff"/><circle cx="33" cy="29" r="3" fill="#fff"><animate attributeName="opacity" values="1;.2;1" dur="3s" repeatCount="indefinite"/></circle>'
         + tx(43, 33, bdg, 10.5, "#fff") + tx(20, 66, ttl, 16, "#fff", "start", 700)
-        + "".join(tx(20, 90 + k_ * 19, l, 12, "#cfcfcf") for k_, l in enumerate(textwrap.wrap(desc, 54)[:3])) + tx(20, 148, tech, 12, "#fff") + '</g>')
+        + "".join(tx(20, 90 + k_ * 18, l, 12, "#cfcfcf") for k_, l in enumerate(textwrap.wrap(desc, 54)[:3])) + tx(20, 150, tech, 12, "#fff") + '</g>')
 # contributions
 D = C + 62 + 160 + 44; add(cmdpill(D, "git log ./contributions")); cw5 = 904 / len(stats)
 for i, (v, l) in enumerate(stats):
@@ -283,12 +283,13 @@ add(tx(0, yy + 28, "$", 16, "#8a8a8a") + f'<rect x="22" y="{yy+14}" width="10" h
 add(f'<rect x="0.5" y="{yy+56}" width="903" height="122" rx="10" fill="#0a0a0a" stroke="#2f2f2f"/>' + tx(20, yy + 86, "text", 12, "#7a7a7a") + tx(884, yy + 86, "terminal specification", 12, "#7a7a7a", "end") + f'<line x1="1" y1="{yy+100}" x2="903" y2="{yy+100}" stroke="#2f2f2f"/>' + tx(20, yy + 148, "[EOF] ─── guest@yatharth2soni:~$ logout ─── Connection to terminal closed.", 15.5, "#fff"))
 F_ = yy + 206
 VY, VH = 108, 502; maxoff = F_ - VH
-stops = [0] + [min(m - 16, maxoff) for m in (A, B, C, D, E_)]
+stops = [0] + [min(m - 16, maxoff) for m in (A, B, C, D, H0 - 78, E_)]
+CHIP = [0, 1, 2, 3, 3, 4]
 # timeline
 hold0, trn, hold, upd = 2.0, 1.2, 2.8, 2.6
 pts = [(0, 0), (hold0, 0)]; cur = hold0; holds = []; downs = []
 for i, s_ in enumerate(stops[1:]):
-    ts = cur; cur += trn; pts.append((cur, s_)); downs.append((ts, cur)); cur += hold; pts.append((cur, s_)); holds.append((i, ts, cur))
+    ts = cur; cur += trn; pts.append((cur, s_)); downs.append((ts, cur)); cur += hold; pts.append((cur, s_)); holds.append((CHIP[i], ts, cur))
 up_s = cur; cur += upd; pts.append((cur, 0)); cur += 0.6; pts.append((cur, 0)); total = cur
 kt = ";".join(f"{p/total:.4f}" for p, _ in pts)
 spl = ";".join("0 0 1 1" if pts[i][1] == pts[i+1][1] else "0.45 0 0.2 1" for i in range(len(pts) - 1))
@@ -301,9 +302,9 @@ body = ('<rect x="4" y="4" width="952" height="612" rx="16" fill="#000" stroke="
         '<rect x="4" y="4" width="952" height="612" rx="16" fill="none" stroke="#fff" stroke-width="3.5" pathLength="100" stroke-dasharray="12 88" filter="url(#g)"><animate attributeName="stroke-dashoffset" from="0" to="-100" dur="6s" repeatCount="indefinite"/></rect>'
         '<circle cx="34" cy="30" r="7" fill="#fff"/><circle cx="58" cy="30" r="7" fill="#9a9a9a"/><circle cx="82" cy="30" r="7" fill="#4a4a4a"/>'
         + tx(110, 35, "guest@yatharth2soni:", 13, "#9a9a9a") + tx(262, 35, "~/profile/README.md", 14, "#fff", "start", 700)
-        + '<rect x="470" y="14" width="128" height="32" rx="7" fill="none" stroke="#fff" stroke-opacity=".6"/>' + tx(534, 35, "Terminal Shell", 12, "#d0d0d0", "middle")
-        + '<rect x="610" y="14" width="116" height="32" rx="7" fill="#fff" filter="url(#g)"/>' + tx(668, 35, "✦ Glow Lights", 12, "#000", "middle", 700)
-        + '<rect x="738" y="14" width="112" height="32" rx="7" fill="none" stroke="#fff" stroke-opacity=".8"/><path d="M757 24 L757 36 L767 30 Z" fill="#fff"><animate attributeName="opacity" values="1;.25;1" dur="1.4s" repeatCount="indefinite"/></path>' + tx(802, 35, "Auto-Scroll", 12, "#fff", "middle") + '<circle cx="838" cy="30" r="3.5" fill="#39d353" filter="url(#g)"><animate attributeName="opacity" values="1;.2;1" dur="1s" repeatCount="indefinite"/></circle>'
+        + '<rect x="456" y="14" width="128" height="32" rx="7" fill="none" stroke="#fff" stroke-opacity=".6"/>' + tx(520, 35, "Terminal Shell", 12, "#d0d0d0", "middle")
+        + '<rect x="596" y="14" width="114" height="32" rx="7" fill="#fff" filter="url(#g)"/>' + tx(653, 35, "✦ Glow Lights", 12, "#000", "middle", 700)
+        + '<rect x="722" y="14" width="134" height="32" rx="7" fill="none" stroke="#fff" stroke-opacity=".8"/><path d="M738 24 L738 36 L748 30 Z" fill="#fff"><animate attributeName="opacity" values="1;.25;1" dur="1.4s" repeatCount="indefinite"/></path>' + tx(790, 35, "Auto-Scroll", 12, "#fff", "middle") + '<circle cx="842" cy="30" r="3.5" fill="#39d353" filter="url(#g)"><animate attributeName="opacity" values="1;.2;1" dur="1s" repeatCount="indefinite"/></circle>'
         + '<rect x="862" y="14" width="34" height="32" rx="7" fill="none" stroke="#fff" stroke-opacity=".6"/>' + tx(879, 36, "↑", 16, "#fff", "middle")
         + '<rect x="908" y="14" width="34" height="32" rx="7" fill="none" stroke="#fff" stroke-opacity=".6"/>' + tx(925, 36, "↓", 16, "#fff", "middle")
         + f'<g opacity="0">{disc([(up_s, up_s+upd)])}<rect x="862" y="14" width="34" height="32" rx="7" fill="#fff"/>' + tx(879, 36, "↑", 16, "#000", "middle", 700) + '</g>'
@@ -312,7 +313,7 @@ body = ('<rect x="4" y="4" width="952" height="612" rx="16" fill="#000" stroke="
         + tx(28, 86, "✦ Jump:", 12, "#9a9a9a"))
 jx = 104
 for i, lab in enumerate(["cat about.md", "ls ./toolkit", "ls ./projects", "git log ./contributions", "cat focus.txt"]):
-    w_ = len(lab) * 7.3 + 46; _, a_, b_ = holds[i]
+    w_ = len(lab) * 7.3 + 46; iv = [h_ for h_ in holds if h_[0] == i]; a_, b_ = iv[0][1], iv[-1][2]
     body += (f'<rect x="{jx}" y="68" width="{w_:.0f}" height="28" rx="6" fill="none" stroke="#fff" stroke-opacity=".5"/>' + tx(jx + 14, 87, "❯ " + lab, 12, "#d0d0d0")
              + f'<g opacity="0">{disc([(a_, b_)])}<rect x="{jx}" y="68" width="{w_:.0f}" height="28" rx="6" fill="#fff" filter="url(#g)"/>' + tx(jx + 14, 87, "❯ " + lab, 12, "#000", "start", 700) + '</g>')
     jx += w_ + 10
