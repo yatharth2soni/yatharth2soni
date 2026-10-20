@@ -30,7 +30,21 @@ a{color:#fff}
 .hm{display:grid;grid-auto-flow:column;grid-template-rows:repeat(7,12px);gap:3px;overflow-x:auto;padding-bottom:6px}.hm b{width:12px;height:12px;border-radius:2.5px;background:#0d1410;border:1px solid #17261d}.hm .l1{background:#0e4429}.hm .l2{background:#006d32}.hm .l3{background:#26a641}.hm .l4{background:#39d353;box-shadow:0 0 8px #39d353}
 #feed{font-size:12px;color:#cfcfcf;margin-top:10px}#feed div{padding:4px 0;border-top:1px solid #1d1d1d}#feed span{color:#39d353;margin-right:8px}
 .eof{margin-top:34px;background:#0a0a0a;border:1px solid #2f2f2f;border-radius:12px;overflow:hidden}.eof .t{display:flex;justify-content:space-between;color:#7a7a7a;font-size:12px;padding:12px 18px;border-bottom:1px solid #2f2f2f}.eof p{margin:0;padding:22px 18px;font-size:clamp(11px,1.9vw,17px);white-space:nowrap;overflow:hidden}
+.pw{width:min(1000px,100%);display:flex;align-items:center;justify-content:center;gap:26px;margin:0 auto 18px;flex-wrap:wrap}
+.tg{width:132px;height:58px;border-radius:29px;border:2px solid #7a7a7a;background:#0b0b0b;position:relative;cursor:pointer;transition:.5s;padding:0;color:#666;font:700 14px var(--f);box-shadow:0 0 0 0 #fff;animation:hint 2.2s infinite}
+.tg::before{content:"";position:absolute;left:6px;top:6px;width:42px;height:42px;border-radius:50%;background:#5a5a5a;transition:.5s}
+.tg span{position:absolute;right:20px;top:17px}
+body.on .tg{background:#fff;border-color:#fff;color:#000;box-shadow:0 0 28px #fff;animation:none}body.on .tg::before{left:76px;background:#000}body.on .tg span{right:auto;left:22px}
+@keyframes hint{50%{box-shadow:0 0 18px rgba(255,255,255,.7)}}
+.bl{display:flex;gap:20px;font-size:11px;letter-spacing:.12em;color:#4a4a4a;align-items:center;flex-wrap:wrap;justify-content:center}.bl i{display:inline-block;width:12px;height:12px;border-radius:50%;background:#111;border:1px solid #444;margin-right:8px;vertical-align:-1px;transition:.6s}
+body.on .bl{color:#fff}body.on .bl i{background:#fff;border-color:#fff;box-shadow:0 0 12px #fff}body.on .bl em:nth-child(2) i{transition-delay:.15s}body.on .bl em:nth-child(3) i{transition-delay:.3s}body.on .bl em:nth-child(4) i{transition-delay:.45s}.bl em{font-style:normal}
+#swt{width:100%;text-align:center;font-size:12px;color:#e6e6e6;animation:hint2 2.2s infinite}body.on #swt{color:#fff;animation:none;text-shadow:0 0 10px #fff}@keyframes hint2{50%{opacity:.35}}
+.win{opacity:0;pointer-events:none;transform:scale(.97);transition:transform .8s}
+body.on .win{pointer-events:auto;transform:none;animation:flick 1.3s forwards}
+@keyframes flick{0%{opacity:0}8%{opacity:.9}14%{opacity:.15}26%{opacity:1}36%{opacity:.35}50%,100%{opacity:1}}
+body{flex-direction:column}.win{display:none}body.on .win{display:block}
 </style></head><body>
+<div class="pw"><button class="tg" id="sw" role="switch" aria-checked="false" aria-label="Power switch: turn the lights on"><span>OFF</span></button><div class="bl"><em><i></i>GITHUB</em><em><i></i>LINKEDIN</em><em><i></i>OPEN SOURCE</em><em><i></i>STATS</em></div><div id="swt">click the switch to turn the lights ON</div></div>
 <div class="win glow" id="win"><div class="in">
 <div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="ttl">guest@yatharth2soni: <b>~/profile/README.md</b></span>
 <button id="glow" class="on">✦ Glow Lights</button><button id="auto" class="on">▶ Auto-Scroll</button><button id="up" aria-label="Scroll up">↑</button><button id="dn" aria-label="Scroll down">↓</button></div>
@@ -65,7 +79,10 @@ document.getElementById("up").onclick=function(){stop();to(vp.scrollTop-340,700)
 document.getElementById("dn").onclick=function(){stop();to(vp.scrollTop+340,700)};
 document.getElementById("glow").onclick=function(){this.classList.toggle("on");win.classList.toggle("glow")};
 ["wheel","touchstart","keydown"].forEach(function(e){vp.addEventListener(e,function(){if(timer)stop()},{passive:true})});
-setTimeout(start,1500);
+var sw=document.getElementById("sw");
+sw.onclick=function(){var on=document.body.classList.toggle("on");sw.setAttribute("aria-checked",on);sw.firstChild.textContent=on?"ON":"OFF";
+ document.getElementById("swt").textContent=on?"● LIGHTS ON · everything connected":"click the switch to turn the lights ON";
+ if(on){vp.scrollTop=0;setTimeout(start,1800)}else{stop();to(0,10)}};
 /* ---- live monitoring: refreshes every 60 s ---- */
 function ago(t){var s=(Date.now()-new Date(t))/1000;return s<3600?Math.max(1,Math.round(s/60))+"m ago":s<86400?Math.round(s/3600)+"h ago":Math.round(s/86400)+"d ago"}
 function live(){

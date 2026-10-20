@@ -332,4 +332,42 @@ fb = ('<rect x="1" y="1" width="958" height="148" rx="12" fill="#0a0a0a" stroke=
       + f'<g clip-path="url(#rv)">{tx(28, 112, EOFTXT, 18.5, "#fff", "start", 500, chr(102)+"ilter=" + chr(34) + "url(#g)" + chr(34))}</g>'
       + '<rect x="28" y="94" width="11" height="24" fill="#fff"><animate attributeName="x" values="28;876;876;28" keyTimes="0;.4;.9;1" dur="10s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;.45;.5;.95;1" dur="1s" repeatCount="indefinite" additive="replace"/></rect>')
 save("footer.svg", fb, 960, 150)
+
+# ---------------------------------------------------------------- power switch (OFF) + lights-on circuit (ON)
+NODES = [(140, "GITHUB"), (290, "LINKEDIN"), (670, "OPEN SOURCE"), (820, "STATS")]
+def scene(on):
+    b = [f'<rect x="1" y="1" width="958" height="168" rx="14" fill="#000" stroke="#fff" stroke-opacity="{.75 if on else .2}"/>']
+    if on:
+        b.append('<rect x="1" y="1" width="958" height="168" rx="14" fill="none" stroke="#fff" stroke-width="3" pathLength="100" stroke-dasharray="10 90" filter="url(#g)"><animate attributeName="stroke-dashoffset" from="0" to="-100" dur="6s" repeatCount="indefinite"/></rect>')
+    b.append(tx(30, 46, "YATHARTH SONI", 20, "#fff" if on else "#5a5a5a", "start", 700, 'filter="url(#g)"' if on else ""))
+    b.append(tx(30, 68, "> Open Source Contributor", 12, "#d0d0d0" if on else "#444"))
+    b.append(tx(930, 46, "● POWER " + ("ON" if on else "OFF"), 11, "#fff" if on else "#555", "end", 500))
+    # wires
+    for x1, x2 in ((155, 420), (540, 805)):
+        b.append(f'<line x1="{x1}" y1="100" x2="{x2}" y2="100" stroke="{"#fff" if on else "#262626"}" stroke-width="{2 if on else 2}" stroke-opacity="{.45 if on else 1}"/>')
+    if on:
+        for x1, x2, i in ((420, 155, 0), (540, 805, 1)):
+            b.append(f'<line x1="{x1}" y1="100" x2="{x2}" y2="100" stroke="#fff" stroke-width="3" stroke-dasharray="5 13" stroke-linecap="round" filter="url(#g)"><animate attributeName="stroke-dashoffset" from="18" to="0" dur="1.1s" repeatCount="indefinite"/></line>')
+    # bulbs
+    for i, (x, name) in enumerate(NODES):
+        if on:
+            d = i * .18
+            b.append(f'<circle cx="{x}" cy="100" r="30" fill="#fff" opacity=".13"><animate attributeName="opacity" values=".05;.2;.1;.2;.13;.13" keyTimes="0;.05;.09;.13;.2;1" dur="6s" begin="{d}s" repeatCount="indefinite"/></circle>')
+            b.append(f'<circle cx="{x}" cy="100" r="15" fill="#fff" filter="url(#g)"><animate attributeName="opacity" values=".2;1;.4;1;1;.85;1" keyTimes="0;.05;.09;.13;.6;.8;1" dur="6s" begin="{d}s" repeatCount="indefinite"/></circle>')
+            b.append(f'<rect x="{x-7}" y="115" width="14" height="8" rx="2" fill="#fff"/>')
+        else:
+            b.append(f'<circle cx="{x}" cy="100" r="15" fill="#090909" stroke="#444"/><rect x="{x-7}" y="115" width="14" height="8" rx="2" fill="#333"/>')
+        b.append(tx(x, 150, name, 10.5, "#fff" if on else "#4a4a4a", "middle", 500, 'letter-spacing="1.2"'))
+    # toggle
+    if on:
+        b.append('<rect x="420" y="74" width="120" height="52" rx="26" fill="#fff" filter="url(#g)"/><circle cx="514" cy="100" r="19" fill="#000"/>' + tx(456, 106, "ON", 16, "#000", "middle", 700))
+        b.append(tx(480, 150, "● LIGHTS ON · everything connected", 12, "#fff", "middle", 700, 'filter="url(#g)"'))
+    else:
+        b.append('<rect x="420" y="74" width="120" height="52" rx="26" fill="#0b0b0b" stroke="#7a7a7a" stroke-width="2"/><circle cx="446" cy="100" r="19" fill="#5a5a5a"/>' + tx(504, 106, "OFF", 14, "#666", "middle", 700))
+        b.append('<rect x="414" y="68" width="132" height="64" rx="32" fill="none" stroke="#fff" stroke-width="2"><animate attributeName="stroke-opacity" values="0;.8;0" dur="2.2s" repeatCount="indefinite"/><animate attributeName="stroke-width" values="1;3;1" dur="2.2s" repeatCount="indefinite"/></rect>')
+        b.append(tx(480, 150, "click here to switch the lights ON", 12.5, "#e6e6e6", "middle", 500) .replace("<text ", '<text><animate attributeName="opacity" values="1;.35;1" dur="2.2s" repeatCount="indefinite"/></text><text ', 1) if False else
+                 f'<text x="480" y="150" fill="#e6e6e6" font-size="12.5" font-weight="500" text-anchor="middle">click here to switch the lights ON<animate attributeName="opacity" values="1;.35;1" dur="2.2s" repeatCount="indefinite"/></text>')
+    return "".join(b)
+save("switch.svg", scene(False), 960, 170)
+save("lights-on.svg", scene(True), 960, 170)
 print("ok", totals, "last-year", ly, "active", active, LANGS)
