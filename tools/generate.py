@@ -20,6 +20,7 @@ def save(name, body, w, h, defs=""):
 
 # ---------------------------------------------------------------- data
 TODAY = dt.date.today()
+STAMP = dt.datetime.now(dt.timezone.utc).strftime("%d %b %H:%M UTC")
 days, totals = {}, {}
 for y in range(2022, TODAY.year + 1):
     try:
@@ -132,8 +133,8 @@ save("langs.svg", body, 470, 260)
 # ---------------------------------------------------------------- heatmap
 end = TODAY; start = end - dt.timedelta(days=end.weekday() + 1 if end.weekday() != 6 else 0) - dt.timedelta(weeks=52)
 body = '<rect x="1" y="1" width="958" height="188" rx="10" fill="#000" stroke="#fff" stroke-opacity=".55"/>'
-body += f'<text x="22" y="30" fill="#fff" font-size="13" font-weight="700">{ly} contributions in the last year</text>'
-fill = {0: ("#0d0d0d", .0), 1: ("#5a5a5a", 0), 2: ("#999", 0), 3: ("#d6d6d6", 0), 4: ("#fff", 1)}
+body += f'<text x="22" y="30" fill="#fff" font-size="13" font-weight="700">{ly} contributions in the last year</text><circle cx="690" cy="26" r="4" fill="#39d353"><animate attributeName="opacity" values="1;.2;1" dur="1.4s" repeatCount="indefinite"/><animate attributeName="r" values="3;6;3" dur="1.4s" repeatCount="indefinite"/></circle><text x="704" y="30" fill="#39d353" font-size="11">LIVE · synced {STAMP}</text>'
+fill = {0: ("#0d1410", 0), 1: ("#0e4429", 0), 2: ("#006d32", 0), 3: ("#26a641", 0), 4: ("#39d353", 1)}
 d = start; col = 0; lastm = None; k = 0
 while d <= end:
     row = (d.weekday() + 1) % 7
@@ -145,11 +146,11 @@ while d <= end:
     extra = ""
     if lv:
         extra = f'<animate attributeName="opacity" values="1;.35;1" dur="3.2s" begin="{(k%13)*.25:.2f}s" repeatCount="indefinite"/>'; k += 1
-    body += f'<rect x="{cx:.1f}" y="{cy}" width="12" height="12" rx="2.5" fill="{f}" stroke="#2a2a2a" stroke-width=".6"{" filter=\"url(#g)\"" if lv>=3 else ""}>{extra}</rect>'
+    body += f'<rect x="{cx:.1f}" y="{cy}" width="12" height="12" rx="2.5" fill="{f}" stroke="#17261d" stroke-width=".6"{" filter=\"url(#g)\"" if lv>=3 else ""}>{extra}</rect>'
     d += dt.timedelta(days=1)
 for r, n in ((1, "Mon"), (3, "Wed"), (5, "Fri")): body += f'<text x="22" y="{50+r*17+10}" fill="#9a9a9a" font-size="10">{n}</text>'
 body += '<rect x="52" y="0" width="60" height="188" fill="url(#sw)" opacity=".18"><animate attributeName="x" values="-80;900" dur="6s" repeatCount="indefinite"/></rect>'
-body += '<text x="740" y="176" fill="#9a9a9a" font-size="10">less</text>' + "".join(f'<rect x="{768+i*16}" y="166" width="11" height="11" rx="2.5" fill="{fill[i][0]}" stroke="#2a2a2a" stroke-width=".6"/>' for i in range(5)) + '<text x="854" y="176" fill="#9a9a9a" font-size="10">more</text>'
+body += '<text x="740" y="176" fill="#9a9a9a" font-size="10">less</text>' + "".join(f'<rect x="{768+i*16}" y="166" width="11" height="11" rx="2.5" fill="{fill[i][0]}" stroke="#17261d" stroke-width=".6"/>' for i in range(5)) + '<text x="854" y="176" fill="#9a9a9a" font-size="10">more</text>'
 save("heatmap.svg", body, 960, 190, '<linearGradient id="sw" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>')
 
 # ---------------------------------------------------------------- connect buttons (animated icons)
@@ -204,4 +205,130 @@ for n, c, t in [("toolkit", "ls ./toolkit", "TECH STACK"), ("oss", "ls ./open-so
     head(f"h-{n}.svg", c, t)
 save("divider.svg", '<rect width="960" height="10" fill="#000"/><line x1="0" y1="5" x2="960" y2="5" stroke="#fff" stroke-opacity=".4"/><rect y="4" width="240" height="2" fill="url(#s)" filter="url(#g)"><animate attributeName="x" values="-240;960" dur="3.5s" repeatCount="indefinite"/></rect>', 960, 10,
      '<linearGradient id="s" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>')
+
+# ---------------------------------------------------------------- auto-scrolling terminal window
+def tx(x, y, s, size=13, fill="#e6e6e6", anchor="start", weight=400, extra=""):
+    return f'<text x="{x}" y="{y}" fill="{fill}" font-size="{size}" font-weight="{weight}" text-anchor="{anchor}" {extra}>{E(s)}</text>'
+def cmdpill(y, s):
+    w = len(s) * 9.6 + 74
+    return (f'<rect x="0.5" y="{y}" width="{w:.1f}" height="38" rx="10" fill="#050505" stroke="#fff" stroke-opacity=".8"/>'
+            + tx(16, y + 25, "$", 16, "#8a8a8a") + tx(36, y + 25, "❯ " + s, 16, "#fff", "start", 700, 'filter="url(#g)"'))
+els = []; add = els.append
+items = [("GITHUB", "YATHARTH2SONI"), ("LINKEDIN", "CONNECT"), ("REPOSITORIES", "EXPLORE")]
+wd = [len(a) * 9 + 12 + len(b) * 9.4 + 28 for a, b in items]
+bx = (904 - sum(wd) - 28 * 2) / 2
+for (a, b), w_ in zip(items, wd):
+    lw, vw = len(a) * 9 + 12, len(b) * 9.4 + 28
+    add(tx(bx, 40, a, 12, "#fff", "start", 500, 'letter-spacing="1.5"') + f'<rect x="{bx+lw:.1f}" y="20" width="{vw:.1f}" height="30" rx="3" fill="#fff"/>' + tx(bx + lw + vw / 2, 40, b, 12, "#000", "middle", 700, 'letter-spacing="1.5"'))
+    bx += w_ + 28
+add(tx(452, 125, "YATHARTH SONI", 44, "#fff", "middle", 700, 'filter="url(#g)" letter-spacing="2"'))
+add(tx(452, 158, "> Open Source Contributor", 16, "#fff", "middle", 500))
+add(tx(452, 190, "Khanan Suraksha & CF Ally Builder", 19, "#fff", "middle", 700))
+add('<line x1="60" y1="215" x2="844" y2="215" stroke="#fff" stroke-opacity=".6"/>')
+# about
+A = 240; add(cmdpill(A, "cat about.md")); yy = A + 74
+for l in textwrap.wrap("I'm a Computer Science student who enjoys solving problems, building software, and learning by contributing to real-world codebases.", 104):
+    add(tx(0, yy, l, 14)); yy += 26
+yy += 8
+for l in ["Improving my Data Structures & Algorithms and software engineering skills", "Interested in web development, backend systems, and AI/ML",
+          "Learning open source through issues, pull requests, reviews, tests, and docs", "Approach: build consistently, learn from reviews, and keep improving"]:
+    add(tx(0, yy, "[+]", 13.5, "#fff", "start", 700) + tx(40, yy, l, 13.5, "#d8d8d8")); yy += 26
+# toolkit
+B = yy + 30; add(cmdpill(B, "ls ./toolkit")); cx, cy = 0, B + 62
+for i, sname in enumerate(STACK):
+    cw = int(len(sname) * 8.6 + 34)
+    if cx + cw > 904: cx, cy = 0, cy + 46
+    add(f'<g transform="translate({cx},{cy})"><rect width="{cw}" height="34" rx="8" fill="#050505" stroke="#fff" stroke-opacity=".6"/>'
+        f'<rect width="{cw}" height="34" rx="8" fill="none" stroke="#fff" stroke-width="1.6" filter="url(#g)" opacity="0"><animate attributeName="opacity" values="0;1;0;0" keyTimes="0;.12;.3;1" dur="7s" begin="{i*.45:.2f}s" repeatCount="indefinite"/></rect>'
+        + tx(cw / 2, 22, sname, 13, "#fff", "middle") + '</g>')
+    cx += cw + 12
+# projects
+C = cy + 34 + 46; add(cmdpill(C, "ls ./projects"))
+for j, (ttl, desc, bdg, url, tech) in enumerate(PROJECTS):
+    x0, y0 = j * 464, C + 62
+    add(f'<g transform="translate({x0},{y0})"><rect x=".5" y=".5" width="439" height="160" rx="10" fill="#050505" stroke="#fff" stroke-opacity=".6"/>'
+        f'<rect x=".5" y=".5" width="439" height="160" rx="10" fill="none" stroke="#fff" stroke-width="2.5" pathLength="100" stroke-dasharray="14 86" filter="url(#g)"><animate attributeName="stroke-dashoffset" from="0" to="-100" dur="7s" begin="{j*1.3}s" repeatCount="indefinite"/></rect>'
+        f'<rect x="20" y="18" width="{len(bdg)*7.4+34:.0f}" height="22" rx="11" fill="none" stroke="#fff"/><circle cx="33" cy="29" r="3" fill="#fff"><animate attributeName="opacity" values="1;.2;1" dur="3s" repeatCount="indefinite"/></circle>'
+        + tx(43, 33, bdg, 10.5, "#fff") + tx(20, 66, ttl, 16, "#fff", "start", 700)
+        + "".join(tx(20, 90 + k_ * 19, l, 12, "#cfcfcf") for k_, l in enumerate(textwrap.wrap(desc, 54)[:3])) + tx(20, 148, tech, 12, "#fff") + '</g>')
+# contributions
+D = C + 62 + 160 + 44; add(cmdpill(D, "git log ./contributions")); cw5 = 904 / len(stats)
+for i, (v, l) in enumerate(stats):
+    cxm = cw5 * i + cw5 / 2
+    add(tx(cxm, D + 90, v, 32, "#fff", "middle", 700, 'filter="url(#g)"') + tx(cxm, D + 114, l, 12, "#bdbdbd", "middle"))
+    if i: add(f'<line x1="{cw5*i:.1f}" y1="{D+62}" x2="{cw5*i:.1f}" y2="{D+122}" stroke="#fff" stroke-opacity=".3"/>')
+yy = D + 160; add(tx(0, yy, "# pull requests", 12, "#8a8a8a")); yy += 28
+for repo, ttl, _d, n, st, _u in PRS:
+    if st == "MERGED": add(f'<rect x="0" y="{yy-15}" width="78" height="22" rx="4" fill="#fff"/>' + tx(39, yy, "MERGED", 11, "#000", "middle", 700))
+    else: add(f'<rect x="0" y="{yy-15}" width="78" height="22" rx="4" fill="none" stroke="#fff"><animate attributeName="opacity" values="1;.35;1" dur="1.6s" repeatCount="indefinite"/></rect>' + tx(39, yy, "OPEN", 11, "#fff", "middle", 700))
+    add(tx(98, yy, repo, 14, "#fff", "start", 700) + tx(260, yy, f"#{n}", 13, "#bdbdbd") + tx(340, yy, ttl, 13, "#d8d8d8")); yy += 32
+yy += 14; add(tx(0, yy, "# contribution heatmap · last 12 months", 12, "#8a8a8a") + f'<circle cx="318" cy="{yy-4}" r="4" fill="#39d353"><animate attributeName="opacity" values="1;.2;1" dur="1.4s" repeatCount="indefinite"/></circle>' + tx(330, yy, f"LIVE · synced {STAMP}", 12, "#39d353")); H0 = yy + 14
+end = TODAY; st0 = end - dt.timedelta(days=end.weekday() + 1 if end.weekday() != 6 else 0) - dt.timedelta(weeks=52)
+dd = st0; colh = 0; kk = 0; lastm = None
+while dd <= end:
+    row = (dd.weekday() + 1) % 7
+    if row == 0 and dd != st0: colh += 1
+    lv = days.get(dd.isoformat(), (0, 0))[1]; fcol = {0: "#0d1410", 1: "#0e4429", 2: "#006d32", 3: "#26a641", 4: "#39d353"}[lv]
+    if row == 0 and dd.month != lastm: add(tx(40 + colh * 15.5, H0 - 4, dd.strftime("%b"), 10, "#8a8a8a")); lastm = dd.month
+    anim = ""
+    if lv: anim = f'<animate attributeName="opacity" values="1;.35;1" dur="3.2s" begin="{(kk%13)*.25:.2f}s" repeatCount="indefinite"/>'; kk += 1
+    add(f'<rect x="{40+colh*15.5:.1f}" y="{H0+row*17}" width="12" height="12" rx="2.5" fill="{fcol}" stroke="#17261d" stroke-width=".6"{" filter=&quot;url(#g)&quot;" if lv>=3 else ""}>{anim}</rect>'.replace("&quot;", '"'))
+    dd += dt.timedelta(days=1)
+for r_, n_ in ((1, "Mon"), (3, "Wed"), (5, "Fri")): add(tx(0, H0 + r_ * 17 + 10, n_, 10, "#8a8a8a"))
+# focus
+E_ = H0 + 7 * 17 + 40; add(cmdpill(E_, "cat focus.txt")); yy = E_ + 74
+for l in ["Practicing data structures & algorithms (DSA)", "Solving problems consistently and learning patterns", "Building full-stack projects", "Improving tests, documentation and maintainability", "Learning from reviews and contributing upstream"]:
+    add(tx(0, yy, "[+]", 13.5, "#fff", "start", 700) + tx(40, yy, l, 13.5, "#d8d8d8")); yy += 28
+add(tx(0, yy + 28, "$", 16, "#8a8a8a") + f'<rect x="22" y="{yy+14}" width="10" height="20" fill="#fff"><animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;.45;.5;.95;1" dur="1s" repeatCount="indefinite"/></rect>')
+add(f'<rect x="0.5" y="{yy+56}" width="903" height="122" rx="10" fill="#0a0a0a" stroke="#2f2f2f"/>' + tx(20, yy + 86, "text", 12, "#7a7a7a") + tx(884, yy + 86, "terminal specification", 12, "#7a7a7a", "end") + f'<line x1="1" y1="{yy+100}" x2="903" y2="{yy+100}" stroke="#2f2f2f"/>' + tx(20, yy + 148, "[EOF] ─── guest@yatharth2soni:~$ logout ─── Connection to terminal closed.", 15.5, "#fff"))
+F_ = yy + 206
+VY, VH = 108, 502; maxoff = F_ - VH
+stops = [0] + [min(m - 16, maxoff) for m in (A, B, C, D, E_)]
+# timeline
+hold0, trn, hold, upd = 3.0, 1.6, 3.6, 3.6
+pts = [(0, 0), (hold0, 0)]; cur = hold0; holds = []; downs = []
+for i, s_ in enumerate(stops[1:]):
+    ts = cur; cur += trn; pts.append((cur, s_)); downs.append((ts, cur)); cur += hold; pts.append((cur, s_)); holds.append((i, ts, cur))
+up_s = cur; cur += upd; pts.append((cur, 0)); cur += 1.0; pts.append((cur, 0)); total = cur
+kt = ";".join(f"{p/total:.4f}" for p, _ in pts)
+spl = ";".join("0 0 1 1" if pts[i][1] == pts[i+1][1] else "0.45 0 0.2 1" for i in range(len(pts) - 1))
+def scroll_anim(f): return f'<animateTransform attributeName="transform" type="translate" values="{";".join(f(y_) for _, y_ in pts)}" keyTimes="{kt}" calcMode="spline" keySplines="{spl}" dur="{total}s" repeatCount="indefinite"/>'
+def disc(intervals):
+    ks, vs = [0.0], ["0"]
+    for a_, b_ in intervals: ks += [a_ / total, b_ / total]; vs += ["1", "0"]
+    return f'<animate attributeName="opacity" values="{";".join(vs)}" keyTimes="{";".join(f"{k:.4f}" for k in ks)}" calcMode="discrete" dur="{total}s" repeatCount="indefinite"/>'
+body = ('<rect x="4" y="4" width="952" height="612" rx="16" fill="#000" stroke="#fff" stroke-opacity=".6" stroke-width="1.5" filter="url(#g)"><animate attributeName="stroke-opacity" values=".9;.45;.9" dur="3s" repeatCount="indefinite"/></rect>'
+        '<rect x="4" y="4" width="952" height="612" rx="16" fill="none" stroke="#fff" stroke-width="3.5" pathLength="100" stroke-dasharray="12 88" filter="url(#g)"><animate attributeName="stroke-dashoffset" from="0" to="-100" dur="6s" repeatCount="indefinite"/></rect>'
+        '<circle cx="34" cy="30" r="7" fill="#fff"/><circle cx="58" cy="30" r="7" fill="#9a9a9a"/><circle cx="82" cy="30" r="7" fill="#4a4a4a"/>'
+        + tx(110, 35, "guest@yatharth2soni:", 13, "#9a9a9a") + tx(262, 35, "~/profile/README.md", 14, "#fff", "start", 700)
+        + '<rect x="470" y="14" width="128" height="32" rx="7" fill="none" stroke="#fff" stroke-opacity=".6"/>' + tx(534, 35, "Terminal Shell", 12, "#d0d0d0", "middle")
+        + '<rect x="610" y="14" width="116" height="32" rx="7" fill="#fff" filter="url(#g)"/>' + tx(668, 35, "✦ Glow Lights", 12, "#000", "middle", 700)
+        + '<rect x="738" y="14" width="112" height="32" rx="7" fill="none" stroke="#fff" stroke-opacity=".8"/><path d="M757 24 L757 36 L767 30 Z" fill="#fff"><animate attributeName="opacity" values="1;.25;1" dur="1.4s" repeatCount="indefinite"/></path>' + tx(808, 35, "Auto-Scroll", 12, "#fff", "middle")
+        + '<rect x="862" y="14" width="34" height="32" rx="7" fill="none" stroke="#fff" stroke-opacity=".6"/>' + tx(879, 36, "↑", 16, "#fff", "middle")
+        + '<rect x="908" y="14" width="34" height="32" rx="7" fill="none" stroke="#fff" stroke-opacity=".6"/>' + tx(925, 36, "↓", 16, "#fff", "middle")
+        + f'<g opacity="0">{disc([(up_s, up_s+upd)])}<rect x="862" y="14" width="34" height="32" rx="7" fill="#fff"/>' + tx(879, 36, "↑", 16, "#000", "middle", 700) + '</g>'
+        + f'<g opacity="0">{disc(downs)}<rect x="908" y="14" width="34" height="32" rx="7" fill="#fff"/>' + tx(925, 36, "↓", 16, "#000", "middle", 700) + '</g>'
+        + '<line x1="5" y1="56" x2="955" y2="56" stroke="#fff" stroke-opacity=".5"/><line x1="5" y1="104" x2="955" y2="104" stroke="#fff" stroke-opacity=".5"/>'
+        + tx(28, 86, "✦ Jump:", 12, "#9a9a9a"))
+jx = 104
+for i, lab in enumerate(["cat about.md", "ls ./toolkit", "ls ./projects", "git log ./contributions", "cat focus.txt"]):
+    w_ = len(lab) * 7.3 + 46; _, a_, b_ = holds[i]
+    body += (f'<rect x="{jx}" y="68" width="{w_:.0f}" height="28" rx="6" fill="none" stroke="#fff" stroke-opacity=".5"/>' + tx(jx + 14, 87, "❯ " + lab, 12, "#d0d0d0")
+             + f'<g opacity="0">{disc([(a_, b_)])}<rect x="{jx}" y="68" width="{w_:.0f}" height="28" rx="6" fill="#fff" filter="url(#g)"/>' + tx(jx + 14, 87, "❯ " + lab, 12, "#000", "start", 700) + '</g>')
+    jx += w_ + 10
+body += (f'<g clip-path="url(#vp)"><g transform="translate(28 {VY})">{scroll_anim(lambda y_: f"28 {VY-y_:.1f}")}{"".join(els)}</g>'
+         f'<rect x="944" y="{VY+8}" width="4" height="{VH-16}" rx="2" fill="#fff" opacity=".12"/>'
+         f'<rect x="944" y="{VY+8}" width="4" height="70" rx="2" fill="#fff" filter="url(#g)"><animateTransform attributeName="transform" type="translate" values="{";".join(f"0 {y_/maxoff*(VH-16-70):.1f}" for _, y_ in pts)}" keyTimes="{kt}" calcMode="spline" keySplines="{spl}" dur="{total}s" repeatCount="indefinite"/></rect></g>')
+save("terminal.svg", body, 960, 620, f'<clipPath id="vp"><rect x="6" y="{VY}" width="948" height="{VH}"/></clipPath>')
+print("terminal height", F_, "maxoff", maxoff, "loop", total)
+
+EOFTXT = "[EOF] ─── guest@yatharth2soni:~$ logout ─── Connection to terminal closed."
+fb = ('<rect x="1" y="1" width="958" height="148" rx="12" fill="#0a0a0a" stroke="#fff" stroke-opacity=".35"/>'
+      '<rect x="1" y="1" width="958" height="148" rx="12" fill="none" stroke="#fff" stroke-width="2.5" pathLength="100" stroke-dasharray="10 90" filter="url(#g)"><animate attributeName="stroke-dashoffset" from="0" to="-100" dur="8s" repeatCount="indefinite"/></rect>'
+      + tx(28, 40, "text", 14, "#7a7a7a") + tx(932, 40, "terminal specification", 14, "#7a7a7a", "end")
+      + '<line x1="1" y1="62" x2="959" y2="62" stroke="#fff" stroke-opacity=".2"/>'
+      + '<clipPath id="rv"><rect x="20" y="78" width="0" height="50"><animate attributeName="width" values="0;900;900;0" keyTimes="0;.4;.9;1" dur="10s" repeatCount="indefinite"/></rect></clipPath>'
+      + f'<g clip-path="url(#rv)">{tx(28, 112, EOFTXT, 18.5, "#fff", "start", 500, chr(102)+"ilter=" + chr(34) + "url(#g)" + chr(34))}</g>'
+      + '<rect x="28" y="94" width="11" height="24" fill="#fff"><animate attributeName="x" values="28;876;876;28" keyTimes="0;.4;.9;1" dur="10s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;.45;.5;.95;1" dur="1s" repeatCount="indefinite" additive="replace"/></rect>')
+save("footer.svg", fb, 960, 150)
 print("ok", totals, "last-year", ly, "active", active, LANGS)
