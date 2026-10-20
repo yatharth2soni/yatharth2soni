@@ -285,11 +285,11 @@ F_ = yy + 206
 VY, VH = 108, 502; maxoff = F_ - VH
 stops = [0] + [min(m - 16, maxoff) for m in (A, B, C, D, E_)]
 # timeline
-hold0, trn, hold, upd = 3.0, 1.6, 3.6, 3.6
+hold0, trn, hold, upd = 2.0, 1.2, 2.8, 2.6
 pts = [(0, 0), (hold0, 0)]; cur = hold0; holds = []; downs = []
 for i, s_ in enumerate(stops[1:]):
     ts = cur; cur += trn; pts.append((cur, s_)); downs.append((ts, cur)); cur += hold; pts.append((cur, s_)); holds.append((i, ts, cur))
-up_s = cur; cur += upd; pts.append((cur, 0)); cur += 1.0; pts.append((cur, 0)); total = cur
+up_s = cur; cur += upd; pts.append((cur, 0)); cur += 0.6; pts.append((cur, 0)); total = cur
 kt = ";".join(f"{p/total:.4f}" for p, _ in pts)
 spl = ";".join("0 0 1 1" if pts[i][1] == pts[i+1][1] else "0.45 0 0.2 1" for i in range(len(pts) - 1))
 def scroll_anim(f): return f'<animateTransform attributeName="transform" type="translate" values="{";".join(f(y_) for _, y_ in pts)}" keyTimes="{kt}" calcMode="spline" keySplines="{spl}" dur="{total}s" repeatCount="indefinite"/>'
@@ -303,7 +303,7 @@ body = ('<rect x="4" y="4" width="952" height="612" rx="16" fill="#000" stroke="
         + tx(110, 35, "guest@yatharth2soni:", 13, "#9a9a9a") + tx(262, 35, "~/profile/README.md", 14, "#fff", "start", 700)
         + '<rect x="470" y="14" width="128" height="32" rx="7" fill="none" stroke="#fff" stroke-opacity=".6"/>' + tx(534, 35, "Terminal Shell", 12, "#d0d0d0", "middle")
         + '<rect x="610" y="14" width="116" height="32" rx="7" fill="#fff" filter="url(#g)"/>' + tx(668, 35, "✦ Glow Lights", 12, "#000", "middle", 700)
-        + '<rect x="738" y="14" width="112" height="32" rx="7" fill="none" stroke="#fff" stroke-opacity=".8"/><path d="M757 24 L757 36 L767 30 Z" fill="#fff"><animate attributeName="opacity" values="1;.25;1" dur="1.4s" repeatCount="indefinite"/></path>' + tx(808, 35, "Auto-Scroll", 12, "#fff", "middle")
+        + '<rect x="738" y="14" width="112" height="32" rx="7" fill="none" stroke="#fff" stroke-opacity=".8"/><path d="M757 24 L757 36 L767 30 Z" fill="#fff"><animate attributeName="opacity" values="1;.25;1" dur="1.4s" repeatCount="indefinite"/></path>' + tx(802, 35, "Auto-Scroll", 12, "#fff", "middle") + '<circle cx="838" cy="30" r="3.5" fill="#39d353" filter="url(#g)"><animate attributeName="opacity" values="1;.2;1" dur="1s" repeatCount="indefinite"/></circle>'
         + '<rect x="862" y="14" width="34" height="32" rx="7" fill="none" stroke="#fff" stroke-opacity=".6"/>' + tx(879, 36, "↑", 16, "#fff", "middle")
         + '<rect x="908" y="14" width="34" height="32" rx="7" fill="none" stroke="#fff" stroke-opacity=".6"/>' + tx(925, 36, "↓", 16, "#fff", "middle")
         + f'<g opacity="0">{disc([(up_s, up_s+upd)])}<rect x="862" y="14" width="34" height="32" rx="7" fill="#fff"/>' + tx(879, 36, "↑", 16, "#000", "middle", 700) + '</g>'
